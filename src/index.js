@@ -59,12 +59,13 @@ threeContacts.forEach(contact => {
 // ITERATION 2 - Delete Buttons
 
 // Your code goes here ...
-const deleteButtons = document.querySelectorAll(".btn-delete");
-deleteButtons.forEach(button => {
-    button.addEventListener("click", (event) => {
-        const row = event.target.closest("tr");
+// Use event delegation to handle delete for all current and future rows
+tableBody.addEventListener("click", (event) => {
+    const deleteBTN = event.target.closest(".btn-delete");
+    if (deleteBTN) {
+        const row = deleteBTN.closest("tr");
         row.remove();
-    });
+    }
 });
 
 // ITERATION 3 - Like Buttons
